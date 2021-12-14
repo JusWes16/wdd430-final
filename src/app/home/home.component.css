@@ -1,0 +1,23 @@
+.jumbotron{
+    text-align: center;
+    padding: 70px;
+}
+.carousel-item img{
+    max-height: 600px;
+}
+
+.carousel{
+    padding: 50px;
+}
+
+.carousel-caption{
+    background-color: rgba(0, 0, 0, 0.466);
+}
+
+.carousel-caption p{
+    font-size: 1.5em;
+}
+
+.carousel-caption h5{
+    font-size: 2em;
+}

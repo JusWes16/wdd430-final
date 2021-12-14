@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row g-10">
+    <app-trail-item
+      *ngFor="let trail of trails"
+      [trail]="trail"
+      [routerLink]="[trail.id]"
+      class="col-lg-4 col-sm-12"
+    ></app-trail-item>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div>
+        <a class="btn btn-success" [routerLink]="['new']">Add Trail</a>
+      </div>
+    </div>
+  </div>
+</div>
