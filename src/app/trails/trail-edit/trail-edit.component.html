@@ -1,75 +1,139 @@
-<div>trail edit</div>
-<!-- <div class="panel panel-default">
-    <div class="panel-body">
-      <form 
-        id="trail-edit" 
-        (ngSubmit)="onSubmit(f)" 
-        #f="ngForm">
+<div class="container">
+  <div class="panel-body">
+    <form 
+      id="trail-edit" 
+      (ngSubmit)="onSubmit(f)" 
+      #f="ngForm">
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <label for="name">What is the trails name?</label>
+          <input
+            type="text"
+            id="name"
+            class="form-control"
+            size="120"
+            max="120"
+            name="name"
+            ngModel
+            [ngModel]="trail?.name"
+            required
+            #name="ngModel"
+          />
+        </div>
+      </div>
 
-        <div class="row">
-          <div class="col-sm-12 form-group">
-            <label for="name">Trail Name:</label>
-            <input
-              type="text"
-              id="name"
-              class="form-control"
-              size="120"
-              max="120"
-              name="name"
-              ngModel
-              [ngModel]="trail?.name"
-              required
-              #name="ngModel"
-            />
-          </div>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <label for="description">Tell us a little bit about the trail.</label>
+          <input
+            type="text"
+            id="description"
+            class="form-control"
+            size="120"
+            max="255"
+            name="description"
+            ngModel
+            [ngModel]="trail?.description"
+          />
         </div>
-  
-        <div class="row">
-          <div class="col-sm-12 form-group">
-            <label for="description">Document Description:</label>
-            <input
-              type="text"
-              id="description"
-              class="form-control"
-              size="120"
-              max="255"
-              name="description"
-              ngModel
-              [ngModel]="document?.description"
-            />
-          </div>
+      </div>
+
+      
+
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <label for="mountain">What mountain is this trail on?</label>
+          <input
+            type="text"
+            id="mountain"
+            class="form-control"
+            size="120"
+            max="255"
+            name="mountain"
+            ngModel
+            [ngModel]="trail?.mountain"
+          />
         </div>
-  
-        <div class="row">
-          <div class="col-sm-12 form-group">
-            <label for="url">Document URL:</label>
-            <input
-              type="text"
-              id="url"
-              class="form-control"
-              size="150"
-              max="255"
-              name="url"
-              ngModel
-              [ngModel]="document?.url"
-              required
-              #url="ngModel"
-            />
-          </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <label for="location">What is the location of the trail head?</label>
+          <input
+            type="text"
+            id="location"
+            class="form-control"
+            size="120"
+            max="255"
+            name="location"
+            ngModel
+            [ngModel]="trail?.location"
+          />
         </div>
-  
-        <div class="alert alert-danger" *ngIf=" !name.valid && name.touched || !url.valid && url.touched">
-          The Document Title and Document URL are required fields.
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <label for="length">How long is this hike in miles?</label>
+          <input
+            type="text"
+            id="length"
+            class="form-control"
+            size="120"
+            max="255"
+            name="length"
+            ngModel
+            [ngModel]="trail?.length"
+          />
         </div>
-  
-        <div class="row">
-          <div class="col-xs-12 btn-toolbar">
-            <button class="btn btn-success" type="submit" [disabled]="!f.valid">
-              Save
-            </button>
-            <button class="btn btn-primary" type="button" (click)="onCancel()">Cancel</button>
-          </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <label for="time">How long does it take to complete this hike?</label>
+          <input
+            type="text"
+            id="time"
+            class="form-control"
+            size="120"
+            max="255"
+            name="time"
+            ngModel
+            [ngModel]="trail?.time"
+          />
         </div>
-      </form>
-    </div>
-  </div> -->
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <label for="imageUrl">Please include an image url of the mountian, trail, or trail head.</label>
+          <input
+            type="text"
+            id="imageUrl"
+            class="form-control"
+            size="150"
+            max="255"
+            name="imageUrl"
+            ngModel
+            [ngModel]="trail?.imageUrl"
+            required
+            #url="ngModel"
+          />
+        </div>
+      </div>
+
+      <div class="alert alert-danger" *ngIf=" !name.valid && name.touched || !url.valid && url.touched">
+        The Document Title and Document URL are required fields.
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12 btn-toolbar">
+          <button class="btn btn-success m-2" type="submit" [disabled]="!f.valid">
+            Save
+          </button>
+          <button class="btn btn-primary m-2" type="button" (click)="onCancel()">Cancel</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

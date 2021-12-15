@@ -1,9 +1,10 @@
 footer {
   color: white;
+  margin-bottom: 0 !important;
 }
 
 .fa {
-  margin: 10px;
+  margin: 2px;
 }
 
 .fa-facebook-square {
@@ -16,4 +17,8 @@ footer {
 
 .fa-instagram {
   color: #ffffff;
+}
+
+.socials{
+  margin-right: 20px;
 }

@@ -19,7 +19,6 @@ export class TrailsComponent implements OnInit {
     this.subscription = this.trailsService.trailsListChanged
       .subscribe((trails) => {
         this.trails = trails
-        console.log(this.trails)
       })
   }
 

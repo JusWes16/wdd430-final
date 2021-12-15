@@ -1,0 +1,6 @@
+ .details{
+     border: 1px solid rgba(0, 0, 0, 0.486);
+     padding: 10px;
+     box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.658);
+     background-color: #FCFFFC;
+ }

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Trail } from '../trail.model';
+import { TrailsService } from '../trails.service';
 
 @Component({
   selector: 'app-trail-item',
@@ -8,10 +9,16 @@ import { Trail } from '../trail.model';
 })
 export class TrailItemComponent implements OnInit {
   @Input() trail: Trail;
+  // trails: Trail[];
 
-  constructor() { }
+  constructor(private trailService: TrailsService) { }
 
   ngOnInit(): void {
+    // this.trails = this.trailService.getTrails();
+  }
+
+  onDelete(id: string){ 
+    this.trailService.deleteTrail(id);
   }
 
 }

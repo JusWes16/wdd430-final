@@ -23,7 +23,6 @@ export class TrailDetailsComponent implements OnInit {
         (params: Params) => {
           this.id = params['id'];
           this.trail = this.trailService.getTrail(this.id);
-          console.log(this.trail)
         }
       );
   }

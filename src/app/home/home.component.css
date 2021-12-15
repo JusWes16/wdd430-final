@@ -1,23 +1,84 @@
-.jumbotron{
-    text-align: center;
-    padding: 70px;
+.jumbotron {
+  text-align: center;
+  padding: 70px;
+  padding-bottom: 30px;
 }
-.carousel-item img{
-    max-height: 600px;
-}
-
-.carousel{
-    padding: 50px;
+.carousel-item img {
+  max-height: 600px;
 }
 
-.carousel-caption{
-    background-color: rgba(0, 0, 0, 0.466);
+.carousel {
+  padding: 50px;
 }
 
-.carousel-caption p{
-    font-size: 1.5em;
+.carousel-caption {
+  background-color: rgba(0, 0, 0, 0.466);
 }
 
-.carousel-caption h5{
-    font-size: 2em;
+.carousel-caption p {
+  font-size: 1.5em;
+}
+
+.carousel-caption h5 {
+  font-size: 2em;
+}
+
+.main-dark-section {
+  background-color: #12263a;
+  margin: 100px 0;
+}
+
+.text-container {
+  padding: 100px;
+}
+.cards-heading {
+  padding: 50px;
+}
+
+.cards {
+  padding-bottom: 100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 5px;
+}
+
+.card {
+  width: 90%;
+  margin: auto;
+  border: 0.5px solid rgba(0, 0, 0, 0.486);
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.8s;
+}
+
+.card:hover{
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.658);
+    color: white;
+    background-color: #085410;
+}
+
+.card:hover > .check-btn{
+    background-color: white;
+}
+
+@media screen and (max-width: 1100px) {
+  .cards {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+.check-btn{
+    background-color: #7D8491;
+    border-color: black;
+    padding: 10px 20px;
+}
+
+.check-btn:hover{
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.658);
+    background-color: #686b70;
 }

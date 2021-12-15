@@ -1,7 +1,6 @@
-<a class="clearfix trail-cards d-block " [routerLink]="[trail.id]">
-  <div class="card text-center text-black" style="width: 26rem">
+<div class="card text-center text-black">
     <img
-      src="../../../assets/images/Kings_Peak.jpg"
+      src="{{ trail.imageUrl }}"
       class="card-img-top"
       alt="..."
     />
@@ -11,13 +10,14 @@
     </div>
     <ul class="list-group list-group-flush">
       <li class="list-group-item">Mountian: {{ trail.mountain }}</li>
-      <li class="list-group-item">Town: {{ trail.town }}</li>
+      <li class="list-group-item">Location: {{ trail.location }}</li>
       <li class="list-group-item">Trail Length: {{ trail.length }}</li>
       <li class="list-group-item">Time to complete: {{ trail.time }}</li>
     </ul>
-    <div class="card-body">
-      <button class="btn btn-primary m-2 edit-btn">Edit</button>
-      <button class="btn btn-danger m-2">Delete</button>
-    </div>
+  <div class="card-body">
+    <a class="btn btn-primary trail-cards m-2" [routerLink]="[trail.id]">View</a>
+    <a class="btn btn-primary m-2 edit-btn" routerLink="{{trail.id}}/edit">Edit</a>
+    <a class="btn btn-danger m-2" (click)="onDelete(trail.id)">Delete</a> 
   </div>
-</a>
+</div>
+

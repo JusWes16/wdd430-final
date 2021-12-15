@@ -1,10 +1,23 @@
 <div class="container-fluid">
   <div class="jumbotron jumbotron-fluid">
     <div class="container">
-      <h1 class="display-3">Trails Near You</h1>
+      <h1 class="display-3">Explore our different trails</h1>
     </div>
   </div>
   <hr/>
   <app-trail-list></app-trail-list>
+  <div class="container-fluid add-trail-section">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="jumbotron jumbotron-fluid text-center">
+          <div class="container">
+            <h1 class="display-4 text-white">Have you hiked any awesome trails lately?</h1>
+            <h4 class="text-white">Add your favorite trails here.</h4>
+            <a class="btn btn-success add-btn" [routerLink]="['new']">Add Trail</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <router-outlet></router-outlet>
 </div>

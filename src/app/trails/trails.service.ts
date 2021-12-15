@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Subject } from 'rxjs';
-import { Trail } from './trail.model'
+import { Trail } from './trail.model';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -12,15 +13,28 @@ export class TrailsService {
 
   constructor(private http: HttpClient) {}
 
-  getTrails(): any{
+  getTrails(): any {
     this.http
-      .get<{ message: string; trails: Trail[] }>('http://localhost:3000/trails')
-      .subscribe((returnTrails) => {
-        this.trails = returnTrails.trails;
-        // this.trails = JSON.parse(JSON.stringify(this.trails));
-        // let trailsChanged = this.trails.slice()
+      .get<{ message: string; trails: any }>('http://localhost:3000/trails')
+      .pipe(
+        map((trailData) => {
+          return trailData.trails.map((trail) => {
+            return {
+              id: trail._id,
+              name: trail.name,
+              description: trail.description,
+              mountain: trail.mountain,
+              location: trail.location,
+              length: trail.length,
+              time: trail.time,
+              imageUrl: trail.imageUrl,
+            };
+          });
+        })
+      )
+      .subscribe((trails) => {
+        this.trails = trails;
         this.trailsListChanged.next([...this.trails]);
-        console.log(this.trails)
       });
   }
 
@@ -33,13 +47,48 @@ export class TrailsService {
     return null;
   }
 
-  // addTrail(title: string, content: string){
-  //   const trail = {id: null, title: title, content: content};
-  //   this.http.post<{message: string}>('http://localhost:3000/trails', trail)
-  //     .subscribe((responceDate)=>{
-  //       console.log(responceDate.message);
-  //     })
-  //   this.trails.push(trail);
+  addTrail(trail: Trail) {
+    this.http
+      .post<{ message: string; trailId: string }>(
+        'http://localhost:3000/trails',
+        trail
+      )
+      .subscribe((responseData) => {
+        console.log(responseData.message);
+        const id = responseData.trailId;
+        trail.id = id;
+      });
+    this.trails.push(trail);
+    this.trailsListChanged.next([...this.trails]);
+  }
 
-  // }
+  updateTrail(oldTrail:Trail, newTrail: Trail) {
+    if (!oldTrail || !newTrail) {
+      return;
+    }
+    const pos = this.trails.findIndex((trail) => trail.id === oldTrail.id);
+    if (pos < 0) {
+      return;
+    }
+    newTrail.id = oldTrail.id;
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    this.http
+      .put(
+        'http://localhost:3000/trails/' + oldTrail.id,
+        newTrail,
+        { headers: headers }
+      )
+      .subscribe((response: Response) => {
+        this.trails[pos] = newTrail;
+        this.trailsListChanged.next([...this.trails]);
+      });
+  }
+
+  deleteTrail(id: string) {
+    this.http.delete('http://localhost:3000/trails/' + id).subscribe(() => {
+      const updateTrails = this.trails.filter(trail => trail.id !== id);
+      this.trails = updateTrails;
+      this.trailsListChanged.next([...this.trails]);
+    });
+  }
 }

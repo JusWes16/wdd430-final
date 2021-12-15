@@ -4,7 +4,7 @@ export class Trail {
     public name: string,
     public description: string,
     public mountain: string,
-    public town: string,
+    public location: string,
     public length: string,
     public time: string,
     public imageUrl: string

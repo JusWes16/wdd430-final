@@ -2,3 +2,19 @@
     text-align: center;
     padding: 70px;
 }
+
+.add-trail-section{
+    margin: 50px 0;
+    background-color: #12263A;
+}
+.add-btn{
+    background-color: #08540F;
+    border-color: #013005;
+    padding: 15px 60px;
+    margin-top: 50px;
+    font-size: larger;
+    font-weight: 800;
+}
+.add-btn:hover{
+    background-color: #05410b;
+}
